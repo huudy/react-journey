@@ -11,6 +11,14 @@ const authReducer = (state = initState, action) => {
 			return { ...state, authError: 'Login Failed' };
 		case 'LOGIN_SUCCESS':
 			return { ...state, authError: null };
+		case 'GH_LOGIN_SUCCESS':
+			return { ...state, authError: null };
+		case 'GH_LOGIN_ERROR':
+			return { ...state, authError: 'GitHub login failed!' };
+		case 'G_LOGIN_SUCCESS':
+			return { ...state, authError: null };
+		case 'G_LOGIN_ERROR':
+			return { ...state, authError: 'Google login failed!' };
 		default:
 			return state;
 	}

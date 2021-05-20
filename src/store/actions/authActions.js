@@ -1,3 +1,5 @@
+import { getProviderById, EXISTING_ACCOUNT } from '../../firebase';
+
 export const register = (newUser) => {
 	return (dispatch, getState, { getFirebase, getFirestore }) => {
 		const firebase = getFirebase();
@@ -67,7 +69,22 @@ export const googleSignIn = () => {
 					dispatch({ type: 'G_LOGIN_SUCCESS' });
 				},
 				(err) => {
+					const { code, credentials, email } = err;
+
 					console.log(err);
+					if (code === EXISTING_ACCOUNT) {
+						console.log('email exists with diff cred');
+						fs.auth()
+							.fetchSignInMethodsForEmail(email)
+							.then((methods) => {
+								const provider = getProviderById(methods[0]);
+								return fs.auth().signInWithPopup(provider);
+							})
+							.then((res) => {
+								res.user.linkAndRetrieveDataWithCredential(credentials);
+								dispatch({ type: 'G_LOGIN_SUCCESS' });
+							});
+					}
 					dispatch({ type: 'G_LOGIN_ERROR' });
 				}
 			);
@@ -78,16 +95,30 @@ export const githubSignIn = () => {
 	return (dispatch, getState, { getFirebase }) => {
 		const fs = getFirebase();
 		const githubProvider = new fs.auth.GithubAuthProvider();
-		// firebase.auth().signInWithPopup(githubProvider);
 		fs.auth()
 			.signInWithPopup(githubProvider)
 			.then(
 				(result) => {
 					dispatch({ type: 'GH_LOGIN_SUCCESS' });
-
-					console.log(result);
 				},
 				(err) => {
+					const { code, credentials, email } = err;
+
+					if (code === EXISTING_ACCOUNT) {
+						console.log('email exists with diff cred');
+
+						fs.auth()
+							.fetchSignInMethodsForEmail(email)
+							.then((methods) => {
+								const provider = getProviderById(methods[0]);
+								console.log('got provider');
+								console.log(provider);
+								return fs.auth().signInWithPopup(provider);
+							})
+							.then((res) => {
+								res.user.linkAndRetrieveDataWithCredential(credentials);
+							});
+					}
 					dispatch({ type: 'GH_LOGIN_ERROR' });
 
 					console.log(err);

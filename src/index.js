@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
@@ -24,6 +24,7 @@ import {
 	isLoaded,
 } from 'react-redux-firebase';
 import { firebase, rrfConfig } from './firebase';
+import SplashScreen from 'components/Animations/SplashScreen';
 
 const initialState = {};
 const store = createStore(
@@ -43,7 +44,7 @@ const rrfProps = {
 
 function AuthIsLoaded({ children }) {
 	const auth = useSelector((state) => state.firebase.auth);
-	if (!isLoaded(auth)) return <div>splash screen...</div>;
+	if (!isLoaded(auth)) return <SplashScreen />;
 	return children;
 }
 

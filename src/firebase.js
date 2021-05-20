@@ -19,7 +19,22 @@ const rrfConfig = {
 	// enableClaims: true // Get custom claims along with the profile
 };
 
+// ++HELPERS
+const getProviderById = (id) => {
+	switch (id) {
+		case 'google.com':
+			return new firebase.auth.GoogleAuthProvider();
+		case 'github.com':
+			return new firebase.auth.GithubAuthProvider();
+		default:
+			return '';
+	}
+};
+
+const EXISTING_ACCOUNT = 'auth/account-exists-with-different-credential';
+const handleLinkingAccounts = (accountName) => {};
+
 firebase.initializeApp(config);
 firebase.firestore();
 
-export { firebase, rrfConfig };
+export { firebase, rrfConfig, getProviderById, EXISTING_ACCOUNT };

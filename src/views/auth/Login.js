@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from '../../store/actions/authActions';
+import {
+	githubSignIn,
+	googleSignIn,
+	login,
+} from '../../store/actions/authActions';
 
 class Login extends Component {
 	state = {
@@ -37,6 +41,7 @@ class Login extends Component {
 										<button
 											className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
 											type="button"
+											onClick={this.props.githubSignIn}
 										>
 											<img
 												alt="..."
@@ -48,6 +53,7 @@ class Login extends Component {
 										<button
 											className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
 											type="button"
+											onClick={this.props.googleSignIn}
 										>
 											<img
 												alt="..."
@@ -152,6 +158,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		login: (creds) => dispatch(login(creds)),
+		githubSignIn: () => dispatch(githubSignIn()),
+		googleSignIn: () => dispatch(googleSignIn()),
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
