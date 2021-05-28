@@ -15,3 +15,4 @@ If you like bright and fresh colors, you will love this Free Tailwind CSS Templa
 - I use Angular at work and I decided to also try React as it is lighter and faster and it makes
   perfect sense to use for small personal projects.
 - As my CSS skills are not very strong, I decided to use some pre coded layout and mainly focus on JS side of the application.
+- Tryign to add hardhat environment so my little app can connect to blockchain 'npx hardhat'

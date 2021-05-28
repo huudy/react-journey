@@ -1,12 +1,12 @@
 import React from 'react';
 
 // components
+const userImg = require('assets/img/team-2-800x800.jpg');
+const userImg2 = require('assets/img/team-3-800x800.jpg');
 
 const CardProfile = (props) => {
-	console.log('setting props');
-	console.log(props);
-	// const { profile } = props;
-
+	const { candidate, onVote } = props;
+	const image = candidate.id == 1 ? userImg : userImg2;
 	return (
 		<>
 			<div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
@@ -16,20 +16,20 @@ const CardProfile = (props) => {
 							<div className="relative">
 								<img
 									alt="..."
-									src={require('assets/img/team-2-800x800.jpg')}
+									src={image}
 									className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
 								/>
 							</div>
 						</div>
 						<div className="w-full px-4 text-center mt-20">
 							<div className="flex justify-center py-4 lg:pt-4 pt-8">
-								<div className="mr-4 p-3 text-center">
+								<div className="mr-12 p-12 text-center">
 									<span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-										22
+										{candidate.voteCount}
 									</span>
-									<span className="text-sm text-gray-500">Friends</span>
+									<span className="text-sm text-gray-500">Votes</span>
 								</div>
-								<div className="mr-4 p-3 text-center">
+								{/* <div className="mr-4 p-3 text-center">
 									<span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
 										10
 									</span>
@@ -40,13 +40,20 @@ const CardProfile = (props) => {
 										89
 									</span>
 									<span className="text-sm text-gray-500">Comments</span>
-								</div>
+								</div> */}
 							</div>
+							<button
+								className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+								type="button"
+								onClick={() => onVote(candidate.id)}
+							>
+								Vote
+							</button>
 						</div>
 					</div>
 					<div className="text-center mt-12">
 						<h3 className="text-xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
-							Jenna Stones
+							{candidate.name}
 						</h3>
 						<div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
 							<i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{' '}

@@ -33,9 +33,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
     "test": "react-scripts test",
+    "sctest": "npx hardhat compile && npx hardhat test",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm start",
-    "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css"
+    "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
+    "bc": "npx hardhat node",
+    "deploy-rop": "npx hardhat run scripts/deploy.js --network ropsten",
+    "deploy": "npx hardhat run scripts/deploy.js --network localhost"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -57,5 +61,13 @@
     "@types/markerclustererplus": "2.1.33",
     "@types/react": "16.9.49",
     "typescript": "4.0.3"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.2.0",
+    "hardhat": "^2.3.0"
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import CardStats from 'components/Cards/CardStats.js';
 
-import bgPic from 'assets/img/Mohaka.png';
+import bgPic from 'assets/img/cool-bg.png';
 
 export default function HeaderStats() {
 	return (
@@ -20,7 +20,7 @@ export default function HeaderStats() {
 						<div className="flex flex-wrap">
 							<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
 								<CardStats
-									statSubtitle="TRAFFIC"
+									statSubtitle="ETHEREUM"
 									statTitle="350,897"
 									statArrow="up"
 									statPercent="3.48"
@@ -32,7 +32,7 @@ export default function HeaderStats() {
 							</div>
 							<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
 								<CardStats
-									statSubtitle="NEW USERS"
+									statSubtitle="BITCOIN"
 									statTitle="2,356"
 									statArrow="down"
 									statPercent="3.48"
@@ -44,7 +44,7 @@ export default function HeaderStats() {
 							</div>
 							<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
 								<CardStats
-									statSubtitle="SALES"
+									statSubtitle="EOS"
 									statTitle="924"
 									statArrow="down"
 									statPercent="1.10"
@@ -56,7 +56,7 @@ export default function HeaderStats() {
 							</div>
 							<div className="w-full lg:w-6/12 xl:w-3/12 px-4">
 								<CardStats
-									statSubtitle="PERFORMANCE"
+									statSubtitle="YFI"
 									statTitle="49,65%"
 									statArrow="up"
 									statPercent="12"

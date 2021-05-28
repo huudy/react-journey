@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Navbar from 'components/Navbars/AuthNavbar.js';
 import Footer from 'components/Footers/Footer.js';
-import background from '../assets/img/Ngaruroro.png';
+import background from '../assets/img/cool-bg.png';
 import { connect } from 'react-redux';
 
 class Profile extends Component {
